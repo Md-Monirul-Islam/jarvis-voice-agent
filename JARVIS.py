@@ -41,6 +41,8 @@ import pyttsx3
 import speech_recognition as sr
 import datetime
 import wikipedia
+import pywhatkit
+import pyautogui
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -59,7 +61,7 @@ def commands():
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source, duration=2)
         try:
-            audio = r.listen(source, timeout=5, phrase_time_limit=10)
+            audio = r.listen(source, timeout=15, phrase_time_limit=10)
             print('Processing audio...')
             query = r.recognize_google(audio, language='en-in')
             print(f"You just said: {query}\n")
@@ -121,4 +123,15 @@ if __name__ == '__main__':
         except:
             speak('no results found...')
             print('No results found....')
+
+    elif 'play' in query:
+        query=query.replace('play','')
+        speak('Playing '+query)
+        pywhatkit.playonyt(query)
+
+    
+    elif 'type' in query:
+        query=query.replace('type','')
+        speak('Please tell me what should I write')
+        pyautogui.write(query)
         
