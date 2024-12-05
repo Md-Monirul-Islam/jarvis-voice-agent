@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # # import pyttsx3
 # # import speech_recognition as sr
 
@@ -47,16 +48,31 @@
 # engine = pyttsx3.init('sapi5')
 # voices = engine.getProperty('voices')
 # engine.setProperty('voice', voices[0].id)
+=======
+# import pyttsx3
+# import speech_recognition as sr
+
+
+# engine = pyttsx3.init('sapi5')
+# voices = engine.getProperty('voices')
+# engine.setProperty('voices',voices[0].id)
+>>>>>>> af3ce43c9b21095bd368c835dd3dbe45f46cafbd
 
 # def speak(audio):
 #     engine.say(audio)
 #     engine.runAndWait()
 
+<<<<<<< HEAD
 # # speak('Hello Munna')
+=======
+# speak('Hello Munna')
+
+>>>>>>> af3ce43c9b21095bd368c835dd3dbe45f46cafbd
 
 # def commands():
 #     r = sr.Recognizer()
 #     with sr.Microphone() as source:
+<<<<<<< HEAD
 #         print('Listening...')
 #         r.pause_threshold = 1
 #         r.adjust_for_ambient_noise(source, duration=2)
@@ -224,6 +240,27 @@
 #                 speak('An error occurred while fetching results.')
 #                 print(f"Error: {e}")
 
+=======
+#         print('Listing....')
+#         r.pause_threshold=1
+#         r.adjust_for_ambient_noise(source,duration=1)
+#         audio = r.listen(source)
+
+#     try:
+#         print("wait for few moments....")
+#         query = r.recognize_google(audio, language='en-in')
+#         print(f"You just said: {query}\n")
+    
+#     except Exception as e:
+#         print(e)
+#         speak('Please tell me again....')
+#         query='none'
+    
+#     return query
+
+
+# query = commands().lower()
+>>>>>>> af3ce43c9b21095bd368c835dd3dbe45f46cafbd
 
 import os
 import pyttsx3
@@ -232,8 +269,11 @@ import datetime
 import wikipedia
 import pywhatkit
 import pyautogui
+<<<<<<< HEAD
 import requests
 from bs4 import BeautifulSoup
+=======
+>>>>>>> af3ce43c9b21095bd368c835dd3dbe45f46cafbd
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -243,6 +283,11 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+<<<<<<< HEAD
+=======
+# speak('Hello Munna')
+
+>>>>>>> af3ce43c9b21095bd368c835dd3dbe45f46cafbd
 def commands():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -268,6 +313,7 @@ def commands():
             speak('Please tell me again....')
             return 'none'
 
+<<<<<<< HEAD
 def wishings():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
@@ -350,3 +396,61 @@ if __name__ == '__main__':
             except Exception as e:
                 speak('An error occurred while fetching results.')
                 print(f"Error: {e}")
+=======
+# query = commands()
+
+def wishings():
+    hour = int(datetime.datetime.now().hour)
+    if hour>=0 and hour<12:
+        print('Good Morning Sir....')
+        speak('Good Morning Sir')
+
+    elif hour>=12 and hour<17:
+        print('Good afternoon Sir....')
+        speak('Good afternoon sir')
+
+    elif hour>=17 and hour<21:
+        print('Good evening sir.....')
+        speak('Good evening sir')
+
+    else:
+        print('Good night sir.....')
+        speak('good night sir')
+
+
+if __name__ == '__main__':
+    wishings()
+    query = commands().lower()
+    if 'time' in query:
+        strTime = datetime.datetime.now().strftime("%H:%M:%S")
+        speak(f'Sir, the time is {strTime}')
+
+    elif 'open firefox' in query:
+        speak('opening firefox application sir.....')
+        os.startfile('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
+
+    elif 'wikipedia' in query:
+        speak('Searching in wikipedia....')
+        try:
+            query=query.replace('wikipedia','')
+            results = wikipedia.summary(query,sentences=2)
+            speak('According to wikipedia,')
+            print(results)
+            speak(results)
+
+        except:
+            speak('no results found...')
+            print('No results found....')
+
+    elif 'play' in query:
+        query=query.replace('play','')
+        speak('Playing '+query)
+        pywhatkit.playonyt(query)
+
+    
+    elif 'type' in query:
+        query=query.replace('type','')
+        speak('Please tell me what should I write')
+        pyautogui.write(query)
+        
+>>>>>>> af3ce43c9b21095bd368c835dd3dbe45f46cafbd
